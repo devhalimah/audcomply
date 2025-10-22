@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AudComply – Lightweight Compliance Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-50 text-gray-800-2 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b">
+    <div class="max-w-6xl mx-auto px-4 py-6">
+      <h1 class="text-3xl font-bold text-indigo-700">AudComply</h1>
+      <p class="text-gray-600">A Lightweight Compliance Tracker</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 container max-w-6xl mx-auto px-4 py-8">
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap gap-3 mb-8">
+      <button id="create-audit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition">
+        Create New Audit
+      </button>
+      <button id="view-saved" class="bg-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded-lg font-medium transition">
+        View Saved Audits
+      </button>
+      <button id="export-json" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium transition hidden">
+        Export JSON
+      </button>
+      <button id="clear-all" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-medium transition hidden">
+        Clear All
+      </button>
+    </div>
+
+    <!-- Active Audit Section -->
+    <section id="active-audit" class="hidden bg-white rounded-xl shadow-md p-6 mb-8">
+      <div class="flex justify-between items-center mb-6">
+        <input type="text" id="audit-title" placeholder="Enter audit title..." class="text-2xl font-semibold border-b-2 border-gray-300 focus:border-indigo-600 outline-none w-full max-w-md" />
+        <button id="save-audit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+          Save Audit
+        </button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mb-6">
+        <div class="flex justify-between text-sm text-gray-600 mb-1">
+          <span>Progress</span>
+          <span id="progress-text">0%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div id="progress-bar" class="bg-indigo-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Task Table -->
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-left text-sm font-medium text-gray-700">
+              <th class="px-4 py-3">Task Name</th>
+              <th class="px-4 py-3">Assignee</th>
+              <th class="px-4 py-3">Due Date</th>
+              <th class="px-4 py-3">Status</th>
+              <th class="px-4 py-3">Evidence</th>
+              <th class="px-4 py-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="task-list" class="text-sm"></tbody>
+        </table>
+      </div>
+
+      <button id="add-task" class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+        + Add Task
+      </button>
+    </section>
+
+    <!-- Saved Audits Modal -->
+    <div id="saved-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden,flex items-center justify-center hidden z-50">
+      <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-screen overflow-y-auto p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold">Saved Audits</h2>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        </div>
+        <div id="saved-list" class="space-y-3"></div>
+      </div>
+    </div>
+
+    <!-- Reminder Section -->
+    <section id="reminders" class="bg-yellow-50 border border-yellow-200 rounded-xl p-5 hidden">
+      <h3 class="font-semibold text-yellow-900 mb-2">Upcoming Tasks (Due in 1 day)</h3>
+      <ul id="reminder-list" class="space-y-1 text-sm text-yellow-800"></ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-auto">
+    <div class="max-w-6xl mx-auto px-4 py-4 text-center text-sm text-gray-600">
+      Built with ❤️ using HTML, Tailwind CSS, and Vanilla JS.
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

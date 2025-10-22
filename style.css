@@ -1,0 +1,8 @@
+/* Minimal overrides if needed */
+#task-list tr:hover {
+  background-color: #f9fafb;
+}
+
+select, input[type="date"], input[type="url"] {
+  @apply border rounded px-2 py-1 text-sm;
+}
